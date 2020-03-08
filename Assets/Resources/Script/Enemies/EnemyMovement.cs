@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
-{
-    
-    public float MovementSpeed = 20;
+{  
+    public float movementSpeed = 20;
     public GameObject[] Points;
     private int RandomPoints;
     private float RandomWaitTime;
-    private float waittime = 0;
+    private float waitTime = 0;
+
     private void Start()
     {
         transform.Rotate(0, 0, 90);
@@ -19,18 +19,18 @@ public class EnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {             
-            transform.position = Vector2.MoveTowards(transform.position, Points[RandomPoints].transform.position, MovementSpeed * Time.deltaTime);
+       transform.position = Vector2.MoveTowards(transform.position, Points[RandomPoints].transform.position, movementSpeed * Time.deltaTime);
 
         if (Vector2.Distance(transform.position, Points[RandomPoints].transform.position) < 0.1f)
         {
-            if(waittime <= 0)
+            if(waitTime <= 0)
             {
                 RandomPoints = Random.Range(0, Points.Length);
-                waittime = RandomWaitTime;
+                waitTime = RandomWaitTime;
             }
             else
             {
-                waittime -= Time.deltaTime;
+                waitTime -= Time.deltaTime;
             }                 
         }
     }

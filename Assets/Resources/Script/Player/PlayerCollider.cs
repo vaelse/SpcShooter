@@ -6,20 +6,16 @@ using UnityEngine.UI;
 public class PlayerCollider : MonoBehaviour
 {
     public Image HealthBar;
-    public Image LaserBar;
-    
-   public GameObject GameoverButton;
-    
-   
+    public Image LaserBar;   
+    public GameObject GameoverButton;
+     
     public void Update()
     {
-
         if (HealthBar.fillAmount > 0.25)
         {
             HealthBar.color = Color.green;
         }
     }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -28,12 +24,12 @@ public class PlayerCollider : MonoBehaviour
             Destroy(collision.gameObject);
             Damaged(0.25f);
         }
-        if(collision.gameObject.tag == "HealthBox")
+        else if(collision.gameObject.tag == "HealthBox")
         {
             HealthBar.fillAmount += 0.25f;
             Destroy(collision.gameObject);
         }
-        if (collision.gameObject.tag == "AmmoBox")
+        else if (collision.gameObject.tag == "AmmoBox")
         {
             Destroy(collision.gameObject);
             LaserBar.fillAmount += 0.25f;
@@ -55,13 +51,11 @@ public class PlayerCollider : MonoBehaviour
             {
                 HealthBar.color = Color.red;
             }
-
-            if (HealthBar.fillAmount == 0)
+            else if (HealthBar.fillAmount == 0)
             {
                 GameoverButton.SetActive(true);
                 Time.timeScale = 0;
                 Destroy(gameObject);
-
             }
         }
     }

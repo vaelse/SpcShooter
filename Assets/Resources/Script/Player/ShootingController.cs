@@ -31,35 +31,37 @@ public class ShootingController : MonoBehaviour
         {
             BulletColor = BlueBullets;
         }
-        if (Input.GetKey(KeyCode.Space) && Time.time > NextShot)
+        else if (Input.GetKey(KeyCode.Space) && Time.time > NextShot)
             {                                 
             Shooting(BulletColor);
-            }     
-        
-        if(Input.GetKey(KeyCode.X) && ImageComponent.fillAmount >= 0)
+            }
+
+        if (ImageComponent.fillAmount == 0 || Input.GetKeyUp(KeyCode.X))
+        {
+            ShootingLaser(false);
+        }
+        else if (Input.GetKey(KeyCode.X) && ImageComponent.fillAmount >= 0)
         {
             ImageComponent.fillAmount -= Time.deltaTime * 0.5f;
             ShootingLaser(true);           
         }
-        if (ImageComponent.fillAmount == 0)
-        {           
-            ShootingLaser(false);
-        }
+        
     }
 
     public void Shooting(GameObject bullet)
     {       
         NextShot = Time.time + AttackSpeed;
-        GameObject Bullets = Instantiate(bullet) as GameObject;
+        var Bullets = Instantiate(bullet) as GameObject;
         Bullets.transform.parent = GameObject.Find("Bullets").transform;
 
         Bullets.transform.position = SpawnPosition[SpawnIndex].position;
         SpawnIndex++;
+
         if (SpawnIndex >= 2)
             SpawnIndex = 0;
         
 
-        Rigidbody2D BulletRigid = Bullets.GetComponent<Rigidbody2D>();
+        var BulletRigid = Bullets.GetComponent<Rigidbody2D>();
         BulletRigid.AddForce(-transform.up * BulletSpeed);      
         Destroy(Bullets, 2f);
     }
@@ -68,5 +70,4 @@ public class ShootingController : MonoBehaviour
     {
         Laser.SetActive(active);   
     }
-
 }

@@ -125,9 +125,8 @@ MonoBehaviour:
   KamiScore: 20
   KamiScoreColor: 80
   HPBox: {fileID: 5471083858987005952, guid: 89ff2912bbb8ee546a867ed69f24d24b, type: 3}
-  LaserBox: {fileID: 5475819933011399034, guid: 04050f57d5e8a1643bdaf1fe1d65b34d,
+  LaserBox: {fileID: 5471083858987005952, guid: b8b6858208b36e4478fb84308e743655,
     type: 3}
-  empty: {fileID: 7040891991674421564, guid: 90ffd088f988ab34e93cdad7cc05d52e, type: 3}
 --- !u!114 &780318277384803558
 MonoBehaviour:
   m_ObjectHideFlags: 0

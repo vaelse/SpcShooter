@@ -8,11 +8,11 @@ public class BlueEnemies : MonoBehaviour
     public float EnemyHP;
     private Material WhiteMat;
     private Material DefaultMat;
-    SpriteRenderer sr;
-    ScoreController score;
-    GameManager killcount;
+    private SpriteRenderer sr;
+    private ScoreController score;
+    private GameManager killcount;
     public int BlueScore = 100;
-    EnemiesController EnemiesCount;
+    private EnemiesController EnemiesCount;
 
     private void Start()
     {
@@ -25,7 +25,8 @@ public class BlueEnemies : MonoBehaviour
 
         GameObject Blue = GameObject.FindGameObjectWithTag("enemyspawn");
         EnemiesCount = Blue.GetComponent<EnemiesController>();
-}
+    }
+
     public void Destroyed()
     {
         EnemiesCount.MaxEnemies--;
@@ -33,32 +34,14 @@ public class BlueEnemies : MonoBehaviour
         score.IncreaseScore(BlueScore);
         killcount.KillIncrease();
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "BlueBullet")
+        if (collision.gameObject.tag == "RedBullet")
         {
+            sr.material = WhiteMat;
             EnemyHP--;
             Destroy(collision.gameObject);
-            sr.material = WhiteMat;
-            if (EnemyHP == 0)
-            {
-                Destroyed();           
-            }
-            else
-            {
-                Invoke("ResetMaterial", 0.09f);
-            }
-
-        }
-      
-    }
-
-    public void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Laser" || collision.gameObject.tag == "BossLazer")
-        {
-            EnemyHP -= 0.5f;
-            sr.material = WhiteMat;
             if (EnemyHP == 0)
             {
                 Destroyed();
@@ -68,10 +51,27 @@ public class BlueEnemies : MonoBehaviour
                 Invoke("ResetMaterial", 0.09f);
             }
         }
-    } 
-    void ResetMaterial()
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Laser" || collision.gameObject.tag == "BossLazer")
+        {
+            EnemyHP -= 0.5f;
+            sr.material = WhiteMat;
+            if (EnemyHP == 0)
+            {
+                Destroyed();
+
+            }
+            else
+            {
+                Invoke("ResetMaterial", 0.09f);
+            }
+        }
+    }
+    private void ResetMaterial()
     {
         sr.material = DefaultMat;
     }
-    
 }

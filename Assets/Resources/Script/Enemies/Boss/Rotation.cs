@@ -6,24 +6,22 @@ public class Rotation : MonoBehaviour
 {
     private void Start()
     {
-        InvokeRepeating("Rota", 2f, 25f);
-        
+        InvokeRepeating("RotationUp", 2f, 25f);
     }
-   
-   public void Rota()
+
+    public void RotationUp()
     {
-                iTween.RotateTo(gameObject, iTween.Hash("z", 0, "time", 2f,"easetype", "easeOutQuad", "oncomplete", "Rotadown"));
+        iTween.RotateTo(gameObject, iTween.Hash("z", 0, "time", 2f, "easetype", "easeOutQuad", "oncomplete", "Rotationdown"));
 
     }
-    public void Rotaback()
+    public void Rotationback()
     {
         iTween.RotateTo(gameObject, iTween.Hash("z", 90, "time", 1f, "easetype", "easeOutQuad"));
 
     }
-    public void Rotadown()
+    public void Rotationdown()
     {
-
-        iTween.RotateTo(gameObject, iTween.Hash("z", 180, "time", 2f, "easetype", "easeOutQuad", "oncomplete", "Rotaback"));
-
+        iTween.RotateTo(gameObject, iTween.Hash("z", 180, "time", 2f, "easetype", "easeOutQuad", "oncomplete", "Rotationback"));
     }
-}
+
+ }

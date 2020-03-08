@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnemiesController : MonoBehaviour
 {
    public GameObject[] SpawnPosition;
-    readonly float SpawnRate = 2f;
-    float NextSpawn;
+    private float SpawnRate = 2f;
+    private float NextSpawn;
     public int MaxEnemies = 0;
     private readonly int EnemiesLimit = 2;
     private int MaxKillcount = 10;
@@ -23,7 +23,6 @@ public class EnemiesController : MonoBehaviour
         InvokeRepeating("SpawnKamii2", 20.1f, 10f);
         InvokeRepeating("SpawnKamii2", 20.2f, 10f);
 
-
     }
     void Update()
     {
@@ -38,26 +37,26 @@ public class EnemiesController : MonoBehaviour
   
     public void SpawnKamii()
     {
-        if (killcount.killcount <= MaxKillcount)
+        if (killcount.killCount <= MaxKillcount)
         {
             EnemiesSpawner enemy;
             enemy = EnemiesSpawner.GetNewKami();
-            this.SpawnKami(enemy, SpawnPosition[3]);
+            SpawnKami(enemy, SpawnPosition[3]);
         }
     }
     public void SpawnKamii2()
     {
-        if (killcount.killcount <= MaxKillcount)
+        if (killcount.killCount <= MaxKillcount)
         {
             EnemiesSpawner enemy;
             enemy = EnemiesSpawner.GetNewKami2();
-            this.SpawnKami(enemy, SpawnPosition[4]);
+            SpawnKami(enemy, SpawnPosition[4]);
         }
     }
    
     public void RandomizeEnemies()
     {
-        if (killcount.killcount <= MaxKillcount)
+        if (killcount.killCount <= MaxKillcount)
         {
             var RandomEnemy = Random.value;
             if (Time.time > NextSpawn)
@@ -84,18 +83,16 @@ public class EnemiesController : MonoBehaviour
 
     public void SpawnNewEnemy(EnemiesSpawner enemy,GameObject SpawnArea = null)
     {
-          int RandomSpawn = Random.Range(0, 3);
-          SpawnArea = this.SpawnPosition[RandomSpawn];
+          //var RandomSpawn = Random.Range(0, 3);
+          SpawnArea = this.SpawnPosition[Random.Range(0, 3)];
 
         Vector3 SpawnPosition = SpawnArea.transform.position;
         enemy.transform.position = SpawnPosition;
-
     }
    
     public void SpawnKami(EnemiesSpawner enemy, GameObject SpawnArea = null)
-    {
-        Vector3 SpawnPosition = SpawnArea.transform.position;
-        enemy.transform.position = SpawnPosition;
+    {   
+        enemy.transform.position = SpawnArea.transform.position;
     }
 
     

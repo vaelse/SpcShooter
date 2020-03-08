@@ -9,7 +9,7 @@ public class Boundaries : MonoBehaviour
     
     public float ObjectWidth;
     public float ObjectHeight;
-    // Start is called before the first frame update
+
     void Start()
     {
         bounds = MainCam.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, MainCam.transform.position.z));
@@ -18,13 +18,11 @@ public class Boundaries : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void LateUpdate()
     {
         Vector3 viewPos = transform.position;
         viewPos.x = Mathf.Clamp(viewPos.x, bounds.x * -1 + ObjectWidth, bounds.x - ObjectWidth);
         viewPos.y = Mathf.Clamp(viewPos.y, bounds.y * -1 + ObjectHeight, bounds.y - ObjectHeight);
         transform.position = viewPos;
-
     }
 }

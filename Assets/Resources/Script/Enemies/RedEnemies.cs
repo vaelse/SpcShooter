@@ -31,9 +31,6 @@ public class RedEnemies : MonoBehaviour
         EnemyCount = Red.GetComponent<EnemiesController>();
     }
 
-
-
-
     public void Destroyed()
     {
         EnemyCount.MaxEnemies--;

@@ -237,8 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RepeatTiming: 4
   BulletSpeed: 5
-  Projectile: {fileID: 6948153099302590807, guid: 0817c4e1794867e4a8fe1f617237a0e5,
-    type: 3}
+  Projectile: {fileID: 1019480068096796, guid: d9ec2b6ea7b46b2468d7e9d1517951f5, type: 3}
   ProjectileSpawn: {fileID: 8659905070873557399}
 --- !u!1 &8659905070954726124
 GameObject:
@@ -819,8 +818,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RepeatTiming: 4
   BulletSpeed: 5
-  Projectile: {fileID: 6948153099302590807, guid: 0817c4e1794867e4a8fe1f617237a0e5,
-    type: 3}
+  Projectile: {fileID: 1019480068096796, guid: d9ec2b6ea7b46b2468d7e9d1517951f5, type: 3}
   ProjectileSpawn: {fileID: 8659905071807366527}
 --- !u!1 &8659905072036476199
 GameObject:
@@ -1198,6 +1196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BossHP: 100
+  YouWon: {fileID: 0}
 --- !u!50 &8659905072319233319
 Rigidbody2D:
   serializedVersion: 4
@@ -1276,6 +1275,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RepeatTiming: 4
   BulletSpeed: 5
-  Projectile: {fileID: 6948153099302590807, guid: 0817c4e1794867e4a8fe1f617237a0e5,
-    type: 3}
+  Projectile: {fileID: 1019480068096796, guid: d9ec2b6ea7b46b2468d7e9d1517951f5, type: 3}
   ProjectileSpawn: {fileID: 8659905072444166500}

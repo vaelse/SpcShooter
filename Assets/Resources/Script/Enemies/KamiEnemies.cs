@@ -16,17 +16,16 @@ public class KamiEnemies : MonoBehaviour
    
     private void Start()
     {
-        float RandomColor = Random.value;
-        //White flash components
+        var RandomColor = Random.value;
         sr = gameObject.GetComponent<SpriteRenderer>();
         WhiteMat = Resources.Load("Material/WhiteFlash", typeof(Material)) as Material;
         DefaultMat = sr.material;
+
         score = GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreController>();
 
         if (RandomColor < .1)
         {
             sr.color = Color.red;
-
         }
         else if (RandomColor > 0.1 && RandomColor < 0.2)
         {
@@ -40,22 +39,19 @@ public class KamiEnemies : MonoBehaviour
 
     public void InstantiatePickable(GameObject Pickable)
     {
-        GameObject PickBox = Instantiate(Pickable, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
-        Rigidbody2D Pickableitem = PickBox.GetComponent<Rigidbody2D>();
-        Pickableitem.AddForce(-transform.up * 2f);
-        //Instantiate(HPBox, gameObject.transform.position, gameObject.transform.rotation);
+        var PickBox = Instantiate(Pickable, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+        var Pickableitem = PickBox.GetComponent<Rigidbody2D>();
+        Pickableitem.AddForce(-transform.up * 2f);      
     }
     private void OnTriggerEnter2D(Collider2D collision)
-    {
-
-        
+    {      
         if (sr.color == Color.white && collision.gameObject.tag == "RedBullet")
         {
             Destroyed(collision, null, KamiScore,0.5f);
         }
         else if (sr.color == Color.white && collision.gameObject.tag == "BlueBullet")
         {
-            Destroyed(collision, null, KamiScoreColor, 1);
+            Destroyed(collision, null, KamiScore, 1);
         }
         else if ( sr.color == Color.blue && collision.gameObject.tag == "BlueBullet" )
         {
@@ -75,7 +71,8 @@ public class KamiEnemies : MonoBehaviour
             sr.material = WhiteMat;
             if (EnemyHP == 0)
             {
-                Destroyed(collision, null, KamiScoreColor, 1);
+                Destroy(gameObject);
+                score.IncreaseScore(KamiScore);              
             }
             else
             {
@@ -101,9 +98,6 @@ public class KamiEnemies : MonoBehaviour
             Invoke("ResetMaterial", 0.09f);
         }
     }
-
-
-
     void ResetMaterial()
     {
         sr.material = DefaultMat;

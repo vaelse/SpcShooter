@@ -5,19 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public int killcount = 0;
-    public GameObject gameobjecttoactive;
-    private int MaxKillcount = 10;
+    public int killCount = 0;
+    public GameObject gameObjectToActive;
+    private int maxKillCount = 10;
 
     public void KillIncrease()
     {
-        killcount++;
+        killCount++;
     }
     public void Update()
     {
-        if (killcount >= MaxKillcount)
+        if (killCount >= maxKillCount)
         {
-            gameobjecttoactive.SetActive(true);
+            gameObjectToActive.SetActive(true);
         }
     }
     public void Restart()

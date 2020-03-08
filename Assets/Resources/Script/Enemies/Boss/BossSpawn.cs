@@ -8,6 +8,4 @@ public class BossSpawn : MonoBehaviour
     {
         iTween.MoveTo(gameObject, iTween.Hash("path", iTweenPath.GetPath("BossPath"), "time", 6, "easytype", iTween.EaseType.linear));
     }
-
-
 }

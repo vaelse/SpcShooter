@@ -2,37 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class ScoreController : MonoBehaviour
 {
-    public Text ScoreText;
-    public Text GameOverText;
-    public Text HighScore;
-    int CurrentScore = 0;
+    public Text scoreText;
+    public Text gameOverText;
+    public Text highScore;
+    int currentScore = 0;
     int HScore = 0;
 
     private void Awake()
     {
         HScore = PlayerPrefs.GetInt("HighScore");
-        HighScore.text = "High Score: " + HScore;
+        highScore.text = "High Score: " + HScore;
     }
 
     public void IncreaseScore(int points)
         {
-
-        CurrentScore += points;
-
+        currentScore += points;
         }
 
 
     public void FixedUpdate()
     {
-        ScoreText.text = CurrentScore.ToString();
-        GameOverText.text = "Score: " + CurrentScore;
+        scoreText.text = currentScore.ToString();
+        gameOverText.text = "Score: " + currentScore;
        
-        if(CurrentScore > HScore)
+        if(currentScore > HScore)
         {
-            PlayerPrefs.SetInt("HighScore", CurrentScore);
-            HighScore.text = "High Score: " + CurrentScore;
+            PlayerPrefs.SetInt("HighScore", currentScore);
+            highScore.text = "High Score: " + currentScore;
         }
     }
 }

@@ -9,20 +9,19 @@ public class BossColider : MonoBehaviour
     public GameObject YouWon;
 
     private void Damage()
-    {
-        
+    {       
         BossHP -= 0.5f;    
         if (BossHP == 0)
         {
             Destroy(gameObject);
             YouWon.SetActive(true);
+            Time.timeScale = 0;
         }
     }
-
-  
-       private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "BlueBullet" || collision.gameObject.tag == "RedBullet")
+ 
+    private void OnTriggerEnter2D(Collider2D collision)
+        {
+           if(collision.gameObject.tag == "BlueBullet" || collision.gameObject.tag == "RedBullet")
         {            
             Destroy(collision.gameObject);
             Damage();

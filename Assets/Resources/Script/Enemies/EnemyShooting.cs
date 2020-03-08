@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyShooting : MonoBehaviour
 {
-   
     public float RepeatTiming; 
     public float BulletSpeed;
     private int ProjectileIndex;
@@ -12,23 +11,21 @@ public class EnemyShooting : MonoBehaviour
     public Transform[] ProjectileSpawn;
 
     private void Start()
-    {
-        float AttackTiming = Random.value;
-    InvokeRepeating("Shoot", AttackTiming, RepeatTiming);
+    {   
+    InvokeRepeating("Shoot", Random.value, RepeatTiming);
     }
 
     public void Shoot()
-    {
-       
-        GameObject Attack = GameObject.Instantiate(Projectile) as GameObject;
+    {      
+        var Attack = GameObject.Instantiate(Projectile) as GameObject;
         Attack.transform.parent = GameObject.Find("Bullets").transform;
         Attack.transform.position = ProjectileSpawn[ProjectileIndex].position;
         ProjectileIndex++;
         if (ProjectileIndex >= ProjectileSpawn.Length)
             ProjectileIndex = 0;
         
-        Rigidbody2D Projectilerb = Attack.GetComponent<Rigidbody2D>();
-        Projectilerb.AddForce(transform.up * BulletSpeed);
+        //var Projectilerb = Attack.GetComponent<Rigidbody2D>();
+        Attack.GetComponent<Rigidbody2D>().AddForce(transform.up * BulletSpeed);
         Destroy(Attack, 2f);
     }
 }
