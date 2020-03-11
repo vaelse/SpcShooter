@@ -6,14 +6,13 @@ using UnityEngine;
 public class RedEnemies : MonoBehaviour
 {
     public float EnemyHP ;
+    public int RedScore = 80;
 
     private Material WhiteMat;
     private Material DefaultMat;
     SpriteRenderer sr;
-
     GameManager killcount;
-    ScoreController score;
-    public int RedScore = 80;
+    ScoreController score;   
     EnemiesController EnemyCount;
 
     private void Start()
@@ -26,14 +25,13 @@ public class RedEnemies : MonoBehaviour
         score = GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreController>();
         killcount = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-        //Max Enemies Count
         GameObject Red = GameObject.FindGameObjectWithTag("enemyspawn");
         EnemyCount = Red.GetComponent<EnemiesController>();
     }
 
     public void Destroyed()
     {
-        EnemyCount.MaxEnemies--;
+        EnemyCount.maxEnemies--;
         Destroy(gameObject);      
         score.IncreaseScore(RedScore);
         killcount.KillIncrease();

@@ -7,14 +7,14 @@ public class EnemiesController : MonoBehaviour
    public GameObject[] SpawnPosition;
     private float SpawnRate = 2f;
     private float NextSpawn;
-    public int MaxEnemies = 0;
-    private readonly int EnemiesLimit = 2;
-    private int MaxKillcount = 10;
-    GameManager killcount;
+    public int maxEnemies = 0;
+    private int enemiesLimit = 2;
+    private int maxKillCount = 10;
+    GameManager killCount;
 
     private void Start()
     {
-        killcount = GameObject.Find("GameManager").GetComponent<GameManager>();
+        killCount = GameObject.Find("GameManager").GetComponent<GameManager>();
         InvokeRepeating("SpawnKamii", 10f, 15f);
         InvokeRepeating("SpawnKamii", 10.1f, 15f);
         InvokeRepeating("SpawnKamii", 10.2f, 15f);
@@ -22,22 +22,18 @@ public class EnemiesController : MonoBehaviour
         InvokeRepeating("SpawnKamii2", 20f, 10f);
         InvokeRepeating("SpawnKamii2", 20.1f, 10f);
         InvokeRepeating("SpawnKamii2", 20.2f, 10f);
-
     }
     void Update()
-    {
-      
-        if (MaxEnemies < EnemiesLimit)
+    {    
+        if (maxEnemies < enemiesLimit)
         {
             RandomizeEnemies();          
-        }
-        
-        
+        }      
     }
   
     public void SpawnKamii()
     {
-        if (killcount.killCount <= MaxKillcount)
+        if (killCount.killCount <= maxKillCount)
         {
             EnemiesSpawner enemy;
             enemy = EnemiesSpawner.GetNewKami();
@@ -46,7 +42,7 @@ public class EnemiesController : MonoBehaviour
     }
     public void SpawnKamii2()
     {
-        if (killcount.killCount <= MaxKillcount)
+        if (killCount.killCount <= maxKillCount)
         {
             EnemiesSpawner enemy;
             enemy = EnemiesSpawner.GetNewKami2();
@@ -56,7 +52,7 @@ public class EnemiesController : MonoBehaviour
    
     public void RandomizeEnemies()
     {
-        if (killcount.killCount <= MaxKillcount)
+        if (killCount.killCount <= maxKillCount)
         {
             var RandomEnemy = Random.value;
             if (Time.time > NextSpawn)
@@ -66,26 +62,22 @@ public class EnemiesController : MonoBehaviour
                 if (RandomEnemy >= 0.5f)
                 {
                     enemy = EnemiesSpawner.GetNewRed();
-                    MaxEnemies++;
+                    maxEnemies++;
                 }
                 else
                 {
                     enemy = EnemiesSpawner.GetNewBlue();
-                    MaxEnemies++;
+                    maxEnemies++;
                 }
-
                 SpawnNewEnemy(enemy);
                 NextSpawn = Time.time + SpawnRate;
-
             }
         }
     }
 
     public void SpawnNewEnemy(EnemiesSpawner enemy,GameObject SpawnArea = null)
     {
-          //var RandomSpawn = Random.Range(0, 3);
-          SpawnArea = this.SpawnPosition[Random.Range(0, 3)];
-
+        SpawnArea = this.SpawnPosition[Random.Range(0, 3)];
         Vector3 SpawnPosition = SpawnArea.transform.position;
         enemy.transform.position = SpawnPosition;
     }

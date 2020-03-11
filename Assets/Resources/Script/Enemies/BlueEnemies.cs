@@ -5,14 +5,18 @@ using UnityEngine.UI;
 
 public class BlueEnemies : MonoBehaviour
 {
-    public float EnemyHP;
+    private float EnemyHP = 5;
+    private int blueScore = 100;
+
+    public AudioSource destoryedSound;
+    public AudioClip Explosion;
     private Material WhiteMat;
     private Material DefaultMat;
     private SpriteRenderer sr;
     private ScoreController score;
     private GameManager killcount;
-    public int BlueScore = 100;
     private EnemiesController EnemiesCount;
+
 
     private void Start()
     {
@@ -23,27 +27,32 @@ public class BlueEnemies : MonoBehaviour
         score = GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreController>();
         killcount = GameObject.Find("GameManager").GetComponent<GameManager>();
 
+        destoryedSound = GetComponent<AudioSource>();
+
         GameObject Blue = GameObject.FindGameObjectWithTag("enemyspawn");
         EnemiesCount = Blue.GetComponent<EnemiesController>();
     }
 
-    public void Destroyed()
+    private void Destroyed()
     {
-        EnemiesCount.MaxEnemies--;
+        destoryedSound.PlayOneShot(Explosion);
+        EnemiesCount.maxEnemies--;       
         Destroy(gameObject);
-        score.IncreaseScore(BlueScore);
+        score.IncreaseScore(blueScore);
         killcount.KillIncrease();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "RedBullet")
+        if (collision.gameObject.tag == "BlueBullet")
         {
+            
             sr.material = WhiteMat;
             EnemyHP--;
             Destroy(collision.gameObject);
             if (EnemyHP == 0)
             {
+                AudioSource.PlayClipAtPoint(Explosion, transform.position);
                 Destroyed();
             }
             else
@@ -62,7 +71,6 @@ public class BlueEnemies : MonoBehaviour
             if (EnemyHP == 0)
             {
                 Destroyed();
-
             }
             else
             {

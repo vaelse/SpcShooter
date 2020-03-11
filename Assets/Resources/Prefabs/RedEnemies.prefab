@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyHP: 4
-  RedScore: 80
+  RedScore: 100
 --- !u!114 &310040226784103141
 MonoBehaviour:
   m_ObjectHideFlags: 0

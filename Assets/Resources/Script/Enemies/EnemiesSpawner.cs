@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemiesSpawner : MonoBehaviour
-{
-    
-
+{   
     public static EnemiesSpawner GetNewRed()
     {
         var enemy = (GameObject)Instantiate(Resources.Load("Prefabs/RedEnemies"));        
@@ -26,5 +24,4 @@ public class EnemiesSpawner : MonoBehaviour
         var enemy = (GameObject)Instantiate(Resources.Load("Prefabs/Kamikkaze2"));
         return enemy.GetComponent<EnemiesSpawner>();
     }
-
 }
