@@ -8,12 +8,12 @@ public class PlayerCollider : MonoBehaviour
     public Image HealthBar;
     public Image LaserBar;
     public GameObject GameoverButton;
-    public AudioSource Pickup;
-
+    public AudioSource playerAudioSource;
+    public AudioClip pickUpSound;
 
     private void Start()
     {
-        Pickup = GetComponent<AudioSource>();
+        playerAudioSource = GetComponent<AudioSource>();
     }
     public void Update()
     {
@@ -34,13 +34,13 @@ public class PlayerCollider : MonoBehaviour
         {
             HealthBar.fillAmount += 0.25f;
             Destroy(collision.gameObject);
-            Pickup.Play();
+            playerAudioSource.PlayOneShot(pickUpSound);
         }
         else if (collision.gameObject.tag == "AmmoBox")
         {
             Destroy(collision.gameObject);
             LaserBar.fillAmount += 0.25f;
-            Pickup.Play();
+            playerAudioSource.PlayOneShot(pickUpSound);
         }
     }
 
@@ -57,8 +57,7 @@ public class PlayerCollider : MonoBehaviour
         HealthBar.fillAmount = HealthBar.fillAmount - PlayerHealthDamage;
 
         if (HealthBar.fillAmount <= 0)
-        {
-            
+        {          
             GameoverButton.SetActive(true);
             Time.timeScale = 0;
             Destroy(gameObject);

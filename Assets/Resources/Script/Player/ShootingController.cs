@@ -16,8 +16,12 @@ public class ShootingController : MonoBehaviour
     GameObject BulletColor = null;
     public Image ImageComponent;
 
+    public AudioSource playerAudioSource;
+    public AudioClip shootingSound;
+    public AudioClip laserSound;
     private void Start()
     {
+        playerAudioSource = GetComponent<AudioSource>();
         BulletColor = RedBullets;
     }
 
@@ -32,12 +36,14 @@ public class ShootingController : MonoBehaviour
             BulletColor = BlueBullets;
         }
         else if (Input.GetKey(KeyCode.Space) && Time.time > NextShot)
-            {                                 
+            {
+            playerAudioSource.PlayOneShot(shootingSound);
             Shooting(BulletColor);
             }
 
         if (ImageComponent.fillAmount == 0 || Input.GetKeyUp(KeyCode.X))
         {
+            
             ShootingLaser(false);
         }
         else if (Input.GetKey(KeyCode.X) && ImageComponent.fillAmount >= 0)

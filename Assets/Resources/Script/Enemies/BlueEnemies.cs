@@ -8,7 +8,7 @@ public class BlueEnemies : MonoBehaviour
     private float EnemyHP = 5;
     private int blueScore = 100;
 
-    public AudioSource destoryedSound;
+    public AudioSource enemyAudioSource;
     public AudioClip Explosion;
     private Material WhiteMat;
     private Material DefaultMat;
@@ -27,7 +27,7 @@ public class BlueEnemies : MonoBehaviour
         score = GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreController>();
         killcount = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-        destoryedSound = GetComponent<AudioSource>();
+        enemyAudioSource = GetComponent<AudioSource>();
 
         GameObject Blue = GameObject.FindGameObjectWithTag("enemyspawn");
         EnemiesCount = Blue.GetComponent<EnemiesController>();
@@ -35,7 +35,6 @@ public class BlueEnemies : MonoBehaviour
 
     private void Destroyed()
     {
-        destoryedSound.PlayOneShot(Explosion);
         EnemiesCount.maxEnemies--;       
         Destroy(gameObject);
         score.IncreaseScore(blueScore);

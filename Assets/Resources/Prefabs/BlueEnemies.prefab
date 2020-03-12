@@ -149,8 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f41bbfc13cbf3af4ea76e8b92416ea20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destoryedSound: {fileID: 4196146471516306993}
-  Explosion: {fileID: 8300000, guid: 9706830eca83ce949bb1e55fe0fb34c2, type: 3}
+  enemyAudioSource: {fileID: 4196146471516306993}
+  Explosion: {fileID: 8300000, guid: 68b1cd0f24df06d4d93e30fb6f956d82, type: 3}
 --- !u!114 &6737302875906295820
 MonoBehaviour:
   m_ObjectHideFlags: 0
