@@ -5,11 +5,11 @@ using UnityEngine;
 public class EnemiesController : MonoBehaviour
 {
    public GameObject[] SpawnPosition;
-    private float SpawnRate = 2f;
-    private float NextSpawn;
+    private float spawnRate = 2f;
+    private float nextSpawn;
     public int maxEnemies = 0;
     private int enemiesLimit = 2;
-    private int maxKillCount = 10;
+    private int maxKillCount = 8;
     GameManager killCount;
 
     private void Start()
@@ -55,7 +55,7 @@ public class EnemiesController : MonoBehaviour
         if (killCount.killCount <= maxKillCount)
         {
             var RandomEnemy = Random.value;
-            if (Time.time > NextSpawn)
+            if (Time.time > nextSpawn)
             {
                 EnemiesSpawner enemy;
 
@@ -70,7 +70,7 @@ public class EnemiesController : MonoBehaviour
                     maxEnemies++;
                 }
                 SpawnNewEnemy(enemy);
-                NextSpawn = Time.time + SpawnRate;
+                nextSpawn = Time.time + spawnRate;
             }
         }
     }
