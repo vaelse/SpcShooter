@@ -46,7 +46,7 @@ public class ShootingController : MonoBehaviour
         {
             ShootingLaser(false);
         }
-        else if (Input.GetKey(KeyCode.X) && imageComponent.fillAmount >= 0)
+        if (Input.GetKey(KeyCode.X) && imageComponent.fillAmount >= 0)
         {
             if (!playerAudioSource.isPlaying)
             {
@@ -54,9 +54,9 @@ public class ShootingController : MonoBehaviour
                 playerAudioSource.Play();
             }
             imageComponent.fillAmount -= Time.deltaTime * 0.5f;
-            ShootingLaser(true);           
+            ShootingLaser(true);
         }
-        if (Input.GetKeyUp(KeyCode.X) || imageComponent.fillAmount == 0)
+       else if (Input.GetKeyUp(KeyCode.X) || imageComponent.fillAmount == 0)
         {
             playerAudioSource.Stop();
         }

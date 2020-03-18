@@ -15,8 +15,7 @@ public class PlayerMovement : MonoBehaviour
         else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {                   
             transform.Translate(Vector3.left * boostSpeed * Time.deltaTime);
-        }    
-        
+        }           
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             transform.Translate(Vector3.up *boostSpeed * Time.deltaTime);
@@ -25,9 +24,5 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.Translate(-Vector3.up *boostSpeed * Time.deltaTime);
         }
-
     }
-
-   
-
 }
