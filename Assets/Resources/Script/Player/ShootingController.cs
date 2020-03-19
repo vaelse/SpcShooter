@@ -6,77 +6,69 @@ using UnityEngine.UI;
 public class ShootingController : MonoBehaviour
 {
     public GameObject Laser;
-    public float attackSpeed;
-    public float bulletSpeed;
-    float nextShot = 0;
-    int spawnIndex = 0;
-    public GameObject redBullets;
-    public GameObject blueBullets;
-    public Transform[] spawnPosition;
-    GameObject blletColor = null;
-    public Image imageComponent;
+    public float AttackSpeed;
+    public float BulletSpeed;
+    float NextShot = 0;
+    int SpawnIndex = 0;
+    public GameObject RedBullets;
+    public GameObject BlueBullets;
+    public Transform[] SpawnPosition;
+    GameObject BulletColor = null;
+    public Image ImageComponent;
 
     public AudioSource playerAudioSource;
-    public AudioSource playerLaserSound;
     public AudioClip shootingSound;
     public AudioClip laserSound;
     private void Start()
     {
         playerAudioSource = GetComponent<AudioSource>();
-        blletColor = redBullets;
+        BulletColor = RedBullets;
     }
 
     private void Update()
     {
         if (Input.GetKey(KeyCode.Alpha1))
         {
-            blletColor = redBullets;
+            BulletColor = RedBullets;
         }
         else if (Input.GetKey(KeyCode.Alpha2))
         {
-            blletColor = blueBullets;
+            BulletColor = BlueBullets;
         }
-        else if (Input.GetKey(KeyCode.Space) && Time.time > nextShot)
+        else if (Input.GetKey(KeyCode.Space) && Time.time > NextShot)
             {
             playerAudioSource.PlayOneShot(shootingSound);
-            Shooting(blletColor);
+            Shooting(BulletColor);
             }
 
-        if (imageComponent.fillAmount == 0 || Input.GetKeyUp(KeyCode.X))
+        if (ImageComponent.fillAmount == 0 || Input.GetKeyUp(KeyCode.X))
         {
+            
             ShootingLaser(false);
         }
-        if (Input.GetKey(KeyCode.X) && imageComponent.fillAmount >= 0)
+        else if (Input.GetKey(KeyCode.X) && ImageComponent.fillAmount >= 0)
         {
-            if (!playerAudioSource.isPlaying)
-            {
-                playerAudioSource.PlayOneShot(laserSound);
-                playerAudioSource.Play();
-            }
-            imageComponent.fillAmount -= Time.deltaTime * 0.5f;
-            ShootingLaser(true);
+            ImageComponent.fillAmount -= Time.deltaTime * 0.5f;
+            ShootingLaser(true);           
         }
-       else if (Input.GetKeyUp(KeyCode.X) || imageComponent.fillAmount == 0)
-        {
-            playerAudioSource.Stop();
-        }
+        
     }
 
     public void Shooting(GameObject bullet)
     {       
-        nextShot = Time.time + attackSpeed;
+        NextShot = Time.time + AttackSpeed;
         var Bullets = Instantiate(bullet) as GameObject;
         Bullets.transform.parent = GameObject.Find("Bullets").transform;
 
-        Bullets.transform.position = spawnPosition[spawnIndex].position;
-        spawnIndex++;
+        Bullets.transform.position = SpawnPosition[SpawnIndex].position;
+        SpawnIndex++;
 
-        if (spawnIndex >= 2)
-            spawnIndex = 0;
+        if (SpawnIndex >= 2)
+            SpawnIndex = 0;
         
 
         var BulletRigid = Bullets.GetComponent<Rigidbody2D>();
-        BulletRigid.AddForce(-transform.up * bulletSpeed);      
+        BulletRigid.AddForce(-transform.up * BulletSpeed);      
         Destroy(Bullets, 2f);
     }
 

@@ -19,7 +19,7 @@ public class RedEnemies : MonoBehaviour
     {
         //White flash components
         sr = gameObject.GetComponent<SpriteRenderer>();
-        WhiteMat = Resources.Load("Material/WhiteFlash", typeof(Material)) as Material;
+        WhiteMat = Resources.Load("Assets/Materials/WhiteFlash", typeof(Material)) as Material;
         DefaultMat = sr.material;
 
         score = GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreController>();
@@ -28,7 +28,6 @@ public class RedEnemies : MonoBehaviour
         GameObject Red = GameObject.FindGameObjectWithTag("enemyspawn");
         EnemyCount = Red.GetComponent<EnemiesController>();
     }
-
     public void Destroyed()
     {
         EnemyCount.maxEnemies--;
@@ -42,6 +41,10 @@ public class RedEnemies : MonoBehaviour
         {
             EnemyHP -= 0.5f;
             sr.material = WhiteMat;
+            if(EnemyHP == 1)
+            {
+                gameObject.GetComponent<SpriteAnimatior>().enabled = true;
+            }
             if (EnemyHP == 0)
             {
                 Destroyed();

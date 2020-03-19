@@ -21,7 +21,7 @@ public class BlueEnemies : MonoBehaviour
     private void Start()
     {
         sr = gameObject.GetComponent<SpriteRenderer>();
-        WhiteMat = Resources.Load("Material/WhiteFlash", typeof(Material)) as Material;
+        WhiteMat = Resources.Load("Assets/Materials/WhiteFlash", typeof(Material)) as Material;
         DefaultMat = sr.material;
 
         score = GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreController>();
