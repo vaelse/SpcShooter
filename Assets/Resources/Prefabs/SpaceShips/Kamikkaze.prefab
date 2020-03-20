@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 5735659871488567933}
   - component: {fileID: 2991513992612523340}
   - component: {fileID: 6960958601047809691}
+  - component: {fileID: 4741799247093901636}
   m_Layer: 0
-  m_Name: Kamikkaze 1
+  m_Name: Kamikkaze
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,6 +128,7 @@ MonoBehaviour:
   HPBox: {fileID: 5471083858987005952, guid: 89ff2912bbb8ee546a867ed69f24d24b, type: 3}
   LaserBox: {fileID: 5471083858987005952, guid: b8b6858208b36e4478fb84308e743655,
     type: 3}
+  animator: {fileID: 4741799247093901636}
 --- !u!114 &2991513992612523340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,3 +153,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc59a058fc3ee2d40ad4ce77dc20d9bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &4741799247093901636
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3017964199313112884}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fcd066d45b40b3c49866526a8e63053e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class RedEnemies : MonoBehaviour
 {
-    public float EnemyHP ;
-    public int RedScore = 80;
+    [SerializeField]
+    private float EnemyHP = 4;
+    private int RedScore = 80;
+    public Animator animator;
 
     private Material WhiteMat;
     private Material DefaultMat;
@@ -28,10 +30,14 @@ public class RedEnemies : MonoBehaviour
         GameObject Red = GameObject.FindGameObjectWithTag("enemyspawn");
         EnemyCount = Red.GetComponent<EnemiesController>();
     }
+    private void Update()
+    {
+        animator.SetFloat("Health", EnemyHP);
+    }
     public void Destroyed()
     {
         EnemyCount.maxEnemies--;
-        Destroy(gameObject);      
+        Destroy(gameObject,0.60f);      
         score.IncreaseScore(RedScore);
         killcount.KillIncrease();
     }
@@ -40,19 +46,15 @@ public class RedEnemies : MonoBehaviour
         if (collision.gameObject.tag == "Laser" || collision.gameObject.tag == "BossLazer")
         {
             EnemyHP -= 0.5f;
-            sr.material = WhiteMat;
-            if(EnemyHP == 1)
-            {
-                gameObject.GetComponent<SpriteAnimatior>().enabled = true;
-            }
+            sr.material = WhiteMat;         
             if (EnemyHP == 0)
             {
-                Destroyed();
-               
+                sr.material = DefaultMat;
+                Destroyed();              
             }
             else
             {
-                Invoke("ResetMaterial", 0.09f);
+                Invoke("ResetMaterial", 0.02f);
             }
         }
     }
@@ -66,11 +68,12 @@ public class RedEnemies : MonoBehaviour
             Destroy(collision.gameObject);
             if (EnemyHP == 0)
             {
+                sr.material = DefaultMat;
                 Destroyed();
             }
             else
             {
-                Invoke("ResetMaterial", 0.09f);
+                Invoke("ResetMaterial", 0.06f);
             }
         }      
     }

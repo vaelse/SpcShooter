@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 6416542480223615132}
   - component: {fileID: 4425570211623694707}
   - component: {fileID: 5786633107845294314}
+  - component: {fileID: 5125017927762299507}
   m_Layer: 0
-  m_Name: Kamikkaze2 1
+  m_Name: Kamikkaze2
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,12 +122,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a7977d37dd387f45badba0169baec6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyHP: 2
+  EnemyHP: 1
   KamiScore: 20
   KamiScoreColor: 80
   HPBox: {fileID: 5471083858987005952, guid: 89ff2912bbb8ee546a867ed69f24d24b, type: 3}
   LaserBox: {fileID: 5471083858987005952, guid: b8b6858208b36e4478fb84308e743655,
     type: 3}
+  animator: {fileID: 5125017927762299507}
 --- !u!114 &4425570211623694707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,3 +153,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2665117ce89128418392e6c80228eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &5125017927762299507
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045238297076509148}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fcd066d45b40b3c49866526a8e63053e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

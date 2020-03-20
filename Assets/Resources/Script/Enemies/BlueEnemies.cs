@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class BlueEnemies : MonoBehaviour
 {
-    private float EnemyHP = 5;
+    private float EnemyHP = 3;
     private int blueScore = 100;
 
+    public Animator animator;
     public AudioSource enemyAudioSource;
     public AudioClip Explosion;
     private Material WhiteMat;
@@ -32,11 +33,14 @@ public class BlueEnemies : MonoBehaviour
         GameObject Blue = GameObject.FindGameObjectWithTag("enemyspawn");
         EnemiesCount = Blue.GetComponent<EnemiesController>();
     }
-
+    private void Update()
+    {
+        animator.SetFloat("Health", EnemyHP);
+    }
     private void Destroyed()
     {
-        EnemiesCount.maxEnemies--;       
-        Destroy(gameObject);
+        EnemiesCount.maxEnemies--;
+        Destroy(gameObject, 0.6f);
         score.IncreaseScore(blueScore);
         killcount.KillIncrease();
     }
@@ -51,7 +55,8 @@ public class BlueEnemies : MonoBehaviour
             Destroy(collision.gameObject);
             if (EnemyHP == 0)
             {
-                AudioSource.PlayClipAtPoint(Explosion, transform.position);
+                enemyAudioSource.PlayOneShot(Explosion);
+                sr.color = Color.white;
                 Destroyed();
             }
             else
@@ -69,11 +74,13 @@ public class BlueEnemies : MonoBehaviour
             sr.material = WhiteMat;
             if (EnemyHP == 0)
             {
+                sr.color = Color.white;
                 Destroyed();
             }
             else
             {
                 Invoke("ResetMaterial", 0.09f);
+                sr.material = DefaultMat;
             }
         }
     }

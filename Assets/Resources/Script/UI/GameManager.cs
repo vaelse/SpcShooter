@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public int killCount;
+    public int killCount = 0;
     public GameObject gameObjectToActive;
     private int maxKillCount = 10;
 
