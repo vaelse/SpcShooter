@@ -178,6 +178,7 @@ MonoBehaviour:
   Laser: {fileID: 1090653764}
   AttackSpeed: 0.2
   BulletSpeed: 50
+  playerLines: {fileID: 1284187930}
   RedBullets: {fileID: 1019480068096796, guid: 8a4d81e95b5da10448633fd03261ee57, type: 3}
   BlueBullets: {fileID: 1019480068096796, guid: d8a85c02d95a7c0449781d2ff49dc353,
     type: 3}
@@ -563,7 +564,7 @@ Transform:
   m_GameObject: {fileID: 1284187930}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 2.46, z: 1}
   m_Children: []
   m_Father: {fileID: 417547503}
   m_RootOrder: 0
@@ -606,7 +607,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300008, guid: 8aeb9e233fbb8f14db39770841b78b94, type: 3}
-  m_Color: {r: 0.5372549, g: 0, b: 0.9811321, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.13054657, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

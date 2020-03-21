@@ -427,7 +427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RepeatTiming: 4
   BulletSpeed: 7
-  Projectile: {fileID: 1877740161113332, guid: c52e98596e69bd44eaf0055adbfe5c07, type: 3}
+  Projectile: {fileID: 1877740161113332, guid: 6ad0e41baf2731a4bbc4c9a4b5f81ff9, type: 3}
   ProjectileSpawn: {fileID: 8659905071495771402}
 --- !u!1 &8659905071366708127
 GameObject:
@@ -771,7 +771,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RepeatTiming: 4
   BulletSpeed: 7
-  Projectile: {fileID: 1877740161113332, guid: c18949cf8f92ac941bb1959bf1e5d814, type: 3}
+  Projectile: {fileID: 1877740161113332, guid: 6ad0e41baf2731a4bbc4c9a4b5f81ff9, type: 3}
   ProjectileSpawn: {fileID: 8659905072115967565}
 --- !u!1 &8659905071807366497
 GameObject:

@@ -7,7 +7,10 @@ public class LookAt : MonoBehaviour
     public Transform Player;
 
     private void Update()
-    {      
-            transform.up = Player.position - transform.position;       
+    {
+        if (Time.timeScale != 0)
+        {
+            transform.up = Player.position - transform.position;
+        }
     }
 }

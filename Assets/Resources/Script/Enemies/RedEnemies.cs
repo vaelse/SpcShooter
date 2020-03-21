@@ -7,7 +7,7 @@ public class RedEnemies : MonoBehaviour
 {
     [SerializeField]
     private float EnemyHP = 4;
-    private int RedScore = 80;
+    private readonly int RedScore = 80;
     public Animator animator;
 
     private Material WhiteMat;
@@ -30,32 +30,26 @@ public class RedEnemies : MonoBehaviour
         GameObject Red = GameObject.FindGameObjectWithTag("enemyspawn");
         EnemyCount = Red.GetComponent<EnemiesController>();
     }
+
     private void Update()
     {
         animator.SetFloat("Health", EnemyHP);
     }
+
     public void Destroyed()
     {
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
         EnemyCount.maxEnemies--;
         Destroy(gameObject,0.60f);      
         score.IncreaseScore(RedScore);
         killcount.KillIncrease();
     }
+
     public void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Laser" || collision.gameObject.tag == "BossLazer")
         {
-            EnemyHP -= 0.5f;
-            sr.material = WhiteMat;         
-            if (EnemyHP == 0)
-            {
-                sr.material = DefaultMat;
-                Destroyed();              
-            }
-            else
-            {
-                Invoke("ResetMaterial", 0.02f);
-            }
+            Damaged(.5f, null);
         }
     }
 
@@ -63,20 +57,29 @@ public class RedEnemies : MonoBehaviour
     {
         if (collision.gameObject.tag == "RedBullet")
         {
-            sr.material = WhiteMat;
-            EnemyHP --;
-            Destroy(collision.gameObject);
-            if (EnemyHP == 0)
-            {
-                sr.material = DefaultMat;
-                Destroyed();
-            }
-            else
-            {
-                Invoke("ResetMaterial", 0.06f);
-            }
+            Damaged(1, collision);
         }      
     }
+
+    public void Damaged(float damage, Collider2D collider )
+    {
+        sr.material = WhiteMat;
+        EnemyHP--;
+        if (collider != null)
+        {
+            Destroy(collider.gameObject);
+        }
+        if (EnemyHP == 0)
+        {
+            sr.material = DefaultMat;
+            Destroyed();
+        }
+        else
+        {
+            Invoke("ResetMaterial", 0.06f);
+        }
+    }
+
     void ResetMaterial()
     {
         sr.material = DefaultMat;

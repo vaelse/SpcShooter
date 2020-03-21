@@ -10,6 +10,7 @@ public class ShootingController : MonoBehaviour
     public float BulletSpeed;
     float NextShot = 0;
     int SpawnIndex = 0;
+    public GameObject playerLines;
     public GameObject RedBullets;
     public GameObject BlueBullets;
     public Transform[] SpawnPosition;
@@ -22,6 +23,7 @@ public class ShootingController : MonoBehaviour
     private void Start()
     {
         playerAudioSource = GetComponent<AudioSource>();
+        playerLines.GetComponent<SpriteRenderer>().color = Color.red;
         BulletColor = RedBullets;
     }
 
@@ -29,10 +31,12 @@ public class ShootingController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Alpha1))
         {
+            playerLines.GetComponent<SpriteRenderer>().color = Color.red;
             BulletColor = RedBullets;
         }
         else if (Input.GetKey(KeyCode.Alpha2))
         {
+            playerLines.GetComponent<SpriteRenderer>().color = Color.blue;
             BulletColor = BlueBullets;
         }
         else if (Input.GetKey(KeyCode.Space) && Time.time > NextShot)
@@ -43,7 +47,6 @@ public class ShootingController : MonoBehaviour
 
         if (ImageComponent.fillAmount == 0 || Input.GetKeyUp(KeyCode.X))
         {
-            
             ShootingLaser(false);
         }
         else if (Input.GetKey(KeyCode.X) && ImageComponent.fillAmount >= 0)

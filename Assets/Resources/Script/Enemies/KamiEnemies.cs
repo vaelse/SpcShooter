@@ -14,14 +14,13 @@ public class KamiEnemies : MonoBehaviour
     public GameObject HPBox;
     public GameObject LaserBox;
     public Animator animator;
-
+    public GameObject pickable;
     private void Start()
     {
         var RandomColor = Random.value;
         sr = gameObject.GetComponent<SpriteRenderer>();
         WhiteMat = Resources.Load("Assets/Materials/WhiteFlash", typeof(Material)) as Material;
         DefaultMat = sr.material;
-
         score = GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreController>();
 
         if (RandomColor < .1)
@@ -37,7 +36,6 @@ public class KamiEnemies : MonoBehaviour
             sr.color = Color.white;
         }         
     }
-
     private void Update()
     {
         animator.SetFloat("Health", EnemyHP);
@@ -70,30 +68,36 @@ public class KamiEnemies : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        if(sr.color == Color.red)
+        {
+            pickable = LaserBox;
+        }
+        else if (sr.color == Color.blue)
+        {
+            pickable = HPBox;
+        }
+        else
+        {
+            pickable = null;
+        }
+
         if (collision.gameObject.tag == "Laser" || collision.gameObject.tag == "BossLazer")
         {
-            EnemyHP -= 0.5f;
-            sr.material = WhiteMat;
-            if (EnemyHP == 0)
-            {
-                sr.material = DefaultMat;
-                Destroy(gameObject);
-                score.IncreaseScore(KamiScore);              
-            }
-            else
-            {
-                Invoke("ResetMaterial", 0.02f);
-            }
+            Destroyed(null, pickable, KamiScore, 0.5f);
         }
     }
 
-    public void Destroyed (Collider2D bullet, GameObject Pickable , int killscore, float damage)
+    public void Destroyed (Collider2D collider, GameObject Pickable , int killscore, float damage)
     {    
         sr.material = WhiteMat;
         EnemyHP -= damage;
-        Destroy(bullet.gameObject);
+        if (collider != null)
+        {
+            Destroy(collider.gameObject);
+        }
         if (EnemyHP <= 0)
         {
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
             sr.material = DefaultMat;
             Destroy(gameObject,0.6f);
             score.IncreaseScore(killscore);

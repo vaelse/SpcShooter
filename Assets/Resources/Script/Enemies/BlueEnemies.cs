@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BlueEnemies : MonoBehaviour
 {
     private float EnemyHP = 3;
-    private int blueScore = 100;
+    private readonly int blueScore = 100;
 
     public Animator animator;
     public AudioSource enemyAudioSource;
@@ -39,6 +39,7 @@ public class BlueEnemies : MonoBehaviour
     }
     private void Destroyed()
     {
+        gameObject.GetComponent<PolygonCollider2D>().enabled = false;
         EnemiesCount.maxEnemies--;
         Destroy(gameObject, 0.6f);
         score.IncreaseScore(blueScore);
@@ -49,20 +50,7 @@ public class BlueEnemies : MonoBehaviour
     {
         if (collision.gameObject.tag == "BlueBullet")
         {
-            
-            sr.material = WhiteMat;
-            EnemyHP--;
-            Destroy(collision.gameObject);
-            if (EnemyHP == 0)
-            {
-                enemyAudioSource.PlayOneShot(Explosion);
-                sr.color = Color.white;
-                Destroyed();
-            }
-            else
-            {
-                Invoke("ResetMaterial", 0.09f);
-            }
+            Damaged( 1, collision);
         }
     }
 
@@ -70,18 +58,26 @@ public class BlueEnemies : MonoBehaviour
     {
         if (collision.gameObject.tag == "Laser" || collision.gameObject.tag == "BossLazer")
         {
-            EnemyHP -= 0.5f;
-            sr.material = WhiteMat;
-            if (EnemyHP == 0)
-            {
-                sr.color = Color.white;
-                Destroyed();
-            }
-            else
-            {
-                Invoke("ResetMaterial", 0.09f);
-                sr.material = DefaultMat;
-            }
+            Damaged(0.5f, null);
+        }
+    }
+
+    public void Damaged(float damage, Collider2D collider)
+    {
+        sr.material = WhiteMat;
+        EnemyHP--;
+        if (collider != null)
+        {
+            Destroy(collider.gameObject);
+        }
+        if (EnemyHP == 0)
+        {
+            sr.material = DefaultMat;
+            Destroyed();
+        }
+        else
+        {
+            Invoke("ResetMaterial", 0.06f);
         }
     }
     private void ResetMaterial()
