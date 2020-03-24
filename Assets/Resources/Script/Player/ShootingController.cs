@@ -19,7 +19,7 @@ public class ShootingController : MonoBehaviour
 
     public AudioSource playerAudioSource;
     public AudioClip shootingSound;
-    public AudioClip laserSound;
+
     private void Start()
     {
         playerAudioSource = GetComponent<AudioSource>();

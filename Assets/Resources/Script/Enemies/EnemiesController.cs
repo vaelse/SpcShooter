@@ -9,7 +9,7 @@ public class EnemiesController : MonoBehaviour
     private float NextSpawn;
     public int maxEnemies = 0;
     private int enemiesLimit = 2;
-    private int maxKillCount = 10;
+    private int maxKillCount = 8;
     GameManager killCount;
 
     private void Start()

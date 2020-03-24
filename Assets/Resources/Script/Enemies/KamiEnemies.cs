@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class KamiEnemies : MonoBehaviour
 {
+    private audiomanager audioManager; 
     public float EnemyHP = 3;
+
     private Material WhiteMat;
     private Material DefaultMat;
     SpriteRenderer sr;
@@ -15,26 +17,18 @@ public class KamiEnemies : MonoBehaviour
     public GameObject LaserBox;
     public Animator animator;
     public GameObject pickable;
+
     private void Start()
-    {
-        var RandomColor = Random.value;
+    {      
         sr = gameObject.GetComponent<SpriteRenderer>();
         WhiteMat = Resources.Load("Assets/Materials/WhiteFlash", typeof(Material)) as Material;
         DefaultMat = sr.material;
+
         score = GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreController>();
 
-        if (RandomColor < .1)
-        {
-            sr.color = Color.red;
-        }
-        else if (RandomColor > 0.1 && RandomColor < 0.2)
-        {
-            sr.color = Color.blue;
-        }
-        else
-        {
-            sr.color = Color.white;
-        }         
+        audioManager = GameObject.FindGameObjectWithTag("audioManager").GetComponent<audiomanager>();
+
+        colorRandomizer();
     }
     private void Update()
     {
@@ -97,6 +91,7 @@ public class KamiEnemies : MonoBehaviour
         }
         if (EnemyHP <= 0)
         {
+            audioManager.Explosound();
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             sr.material = DefaultMat;
             Destroy(gameObject,0.6f);
@@ -112,6 +107,24 @@ public class KamiEnemies : MonoBehaviour
     void ResetMaterial()
     {
         sr.material = DefaultMat;
+    }
+
+    public void colorRandomizer()
+    {
+        var RandomColor = Random.value;
+
+        if (RandomColor < .1)
+        {
+            sr.color = Color.red;
+        }
+        else if (RandomColor > 0.1 && RandomColor < 0.2)
+        {
+            sr.color = Color.blue;
+        }
+        else
+        {
+            sr.color = Color.white;
+        }
     }
 }
 

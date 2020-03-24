@@ -6,43 +6,48 @@ using UnityEngine;
 public class RedEnemies : MonoBehaviour
 {
     [SerializeField]
-    private float EnemyHP = 4;
-    private readonly int RedScore = 80;
+    private float enemyHP = 4;
+    private readonly int redScore = 80;
     public Animator animator;
 
-    private Material WhiteMat;
-    private Material DefaultMat;
+    private Material whiteMat;
+    private Material defaultMat;
     SpriteRenderer sr;
-    GameManager killcount;
-    ScoreController score;   
-    EnemiesController EnemyCount;
+    GameManager killCount;
+    ScoreController killScore;   
+    EnemiesController redEnemySpawner;
+
+    private audiomanager audioManager;
 
     private void Start()
     {
         //White flash components
         sr = gameObject.GetComponent<SpriteRenderer>();
-        WhiteMat = Resources.Load("Assets/Materials/WhiteFlash", typeof(Material)) as Material;
-        DefaultMat = sr.material;
+        whiteMat = Resources.Load("Assets/Materials/WhiteFlash", typeof(Material)) as Material;
+        defaultMat = sr.material;
 
-        score = GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreController>();
-        killcount = GameObject.Find("GameManager").GetComponent<GameManager>();
+        killScore = GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreController>();
+        killCount = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-        GameObject Red = GameObject.FindGameObjectWithTag("enemyspawn");
-        EnemyCount = Red.GetComponent<EnemiesController>();
+        redEnemySpawner = GameObject.FindGameObjectWithTag("enemyspawn").GetComponent<EnemiesController>();
+       
+        audioManager = GameObject.FindGameObjectWithTag("audioManager").GetComponent<audiomanager>();
+
+
     }
 
     private void Update()
     {
-        animator.SetFloat("Health", EnemyHP);
+        animator.SetFloat("Health", enemyHP);
     }
 
     public void Destroyed()
     {
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
-        EnemyCount.maxEnemies--;
+        redEnemySpawner.maxEnemies--;
         Destroy(gameObject,0.60f);      
-        score.IncreaseScore(RedScore);
-        killcount.KillIncrease();
+        killScore.IncreaseScore(redScore);
+        killCount.KillIncrease();
     }
 
     public void OnTriggerStay2D(Collider2D collision)
@@ -63,15 +68,16 @@ public class RedEnemies : MonoBehaviour
 
     public void Damaged(float damage, Collider2D collider )
     {
-        sr.material = WhiteMat;
-        EnemyHP--;
+        sr.material = whiteMat;
+        enemyHP--;
         if (collider != null)
         {
             Destroy(collider.gameObject);
         }
-        if (EnemyHP == 0)
+        if (enemyHP == 0)
         {
-            sr.material = DefaultMat;
+            audioManager.Explosound();
+            sr.material = defaultMat;
             Destroyed();
         }
         else
@@ -82,6 +88,6 @@ public class RedEnemies : MonoBehaviour
 
     void ResetMaterial()
     {
-        sr.material = DefaultMat;
+        sr.material = defaultMat;
     }
 }

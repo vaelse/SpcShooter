@@ -125,8 +125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8112582394307254835}
-  enemyAudioSource: {fileID: 4196146471516306993}
-  Explosion: {fileID: 8300000, guid: 68b1cd0f24df06d4d93e30fb6f956d82, type: 3}
+  blueEnemyAudioSource: {fileID: 4196146471516306993}
+  explosionSound: {fileID: 8300000, guid: 68b1cd0f24df06d4d93e30fb6f956d82, type: 3}
 --- !u!114 &6737302875906295820
 MonoBehaviour:
   m_ObjectHideFlags: 0

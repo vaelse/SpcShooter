@@ -9,15 +9,14 @@ public class BlueEnemies : MonoBehaviour
     private readonly int blueScore = 100;
 
     public Animator animator;
-    public AudioSource enemyAudioSource;
-    public AudioClip Explosion;
+
     private Material WhiteMat;
     private Material DefaultMat;
     private SpriteRenderer sr;
     private ScoreController score;
     private GameManager killcount;
-    private EnemiesController EnemiesCount;
-
+    private EnemiesController blueEnemySpawner;
+    private audiomanager audioManager;
 
     private void Start()
     {
@@ -28,10 +27,10 @@ public class BlueEnemies : MonoBehaviour
         score = GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreController>();
         killcount = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-        enemyAudioSource = GetComponent<AudioSource>();
+        audioManager = GameObject.FindGameObjectWithTag("audioManager").GetComponent<audiomanager>();
 
-        GameObject Blue = GameObject.FindGameObjectWithTag("enemyspawn");
-        EnemiesCount = Blue.GetComponent<EnemiesController>();
+        blueEnemySpawner = GameObject.FindGameObjectWithTag("enemyspawn").GetComponent<EnemiesController>();
+      
     }
     private void Update()
     {
@@ -40,7 +39,7 @@ public class BlueEnemies : MonoBehaviour
     private void Destroyed()
     {
         gameObject.GetComponent<PolygonCollider2D>().enabled = false;
-        EnemiesCount.maxEnemies--;
+        blueEnemySpawner.maxEnemies--;
         Destroy(gameObject, 0.6f);
         score.IncreaseScore(blueScore);
         killcount.KillIncrease();
@@ -64,14 +63,17 @@ public class BlueEnemies : MonoBehaviour
 
     public void Damaged(float damage, Collider2D collider)
     {
-        sr.material = WhiteMat;
-        EnemyHP--;
         if (collider != null)
         {
             Destroy(collider.gameObject);
         }
+        sr.material = WhiteMat;
+        EnemyHP--;
+        
+        
         if (EnemyHP == 0)
         {
+            audioManager.Explosound();
             sr.material = DefaultMat;
             Destroyed();
         }
