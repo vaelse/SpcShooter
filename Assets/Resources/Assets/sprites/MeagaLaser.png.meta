@@ -6,6 +6,14 @@ TextureImporter:
     21300002: MeagaLaser_1
     21300004: MeagaLaser_2
     21300006: MeagaLaser_3
+    21300008: MeagaLaser_4
+    21300010: MeagaLaser_5
+    21300012: MeagaLaser_6
+    21300014: MeagaLaser_7
+    21300016: MeagaLaser_8
+    21300018: MeagaLaser_9
+    21300020: MeagaLaser_10
+    21300022: MeagaLaser_11
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -107,7 +115,7 @@ TextureImporter:
         width: 23
         height: 162
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 1, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -127,7 +135,7 @@ TextureImporter:
         width: 34
         height: 168
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -147,7 +155,7 @@ TextureImporter:
         width: 52
         height: 176
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -167,13 +175,173 @@ TextureImporter:
         width: 57
         height: 175
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 56c17dda1ca698a4696dd0c34a499d6e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeagaLaser_4
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 533
+        width: 21
+        height: 167
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a54aa54baff0b1541bca884d0b4ac5bf
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeagaLaser_5
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 361
+        width: 29
+        height: 171
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22bf90aa733cb9a45bd8f6f190ef472f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeagaLaser_6
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 184
+        width: 40
+        height: 176
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6eaa3464d97902943953985591aae6b9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeagaLaser_7
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 11
+        width: 56
+        height: 169
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46ee03c47326f734fb778e3ee770dd15
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeagaLaser_8
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 537
+        width: 25
+        height: 169
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07d3669f522655e478ca15fd4aa11683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeagaLaser_9
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 359
+        width: 30
+        height: 171
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc5918880b790a54c8590310315520ff
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeagaLaser_10
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 187
+        width: 42
+        height: 171
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 070724c0f81aa7d49a8706250c6e54f7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MeagaLaser_11
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 5
+        width: 53
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d828347504ff9eb46b049d7f95f6ce65
       vertices: []
       indices: 
       edges: []

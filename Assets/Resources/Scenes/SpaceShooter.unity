@@ -1530,7 +1530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.78431374, a: 1}
+  m_Color: {r: 0, g: 0.14901972, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2055,7 +2055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.78431374, a: 0.392}
+  m_Color: {r: 1, g: 0, b: 0.013886929, a: 0.392}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3538,7 +3538,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2042019529
 Transform:
   m_ObjectHideFlags: 0
@@ -3708,7 +3708,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2102988234}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1490.2526, y: -2.6432977, z: 29}
+  m_LocalPosition: {x: 0, y: 0, z: 29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4459,6 +4459,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 1090653764, guid: e378f5cb210ea1f48900a0d79cc59ffb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 780688749, guid: e378f5cb210ea1f48900a0d79cc59ffb, type: 3}
       propertyPath: ImageComponent
       value: 
@@ -4479,5 +4483,37 @@ PrefabInstance:
       propertyPath: MainCam
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 1090653765, guid: e378f5cb210ea1f48900a0d79cc59ffb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1090653765, guid: e378f5cb210ea1f48900a0d79cc59ffb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1090653765, guid: e378f5cb210ea1f48900a0d79cc59ffb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 8.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1090653769, guid: e378f5cb210ea1f48900a0d79cc59ffb, type: 3}
+      propertyPath: SpriteFrames.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300016, guid: e27d3012a6dcd7845a5bcd851ba85618,
+        type: 3}
+    - target: {fileID: 1090653769, guid: e378f5cb210ea1f48900a0d79cc59ffb, type: 3}
+      propertyPath: SpriteFrames.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300018, guid: e27d3012a6dcd7845a5bcd851ba85618,
+        type: 3}
+    - target: {fileID: 1090653769, guid: e378f5cb210ea1f48900a0d79cc59ffb, type: 3}
+      propertyPath: SpriteFrames.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300020, guid: e27d3012a6dcd7845a5bcd851ba85618,
+        type: 3}
+    - target: {fileID: 1090653769, guid: e378f5cb210ea1f48900a0d79cc59ffb, type: 3}
+      propertyPath: SpriteFrames.Array.data[7]
+      value: 
+      objectReference: {fileID: 21300022, guid: e27d3012a6dcd7845a5bcd851ba85618,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e378f5cb210ea1f48900a0d79cc59ffb, type: 3}

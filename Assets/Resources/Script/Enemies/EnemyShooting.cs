@@ -26,6 +26,6 @@ public class EnemyShooting : MonoBehaviour
         
         //var Projectilerb = Attack.GetComponent<Rigidbody2D>();
         Attack.GetComponent<Rigidbody2D>().AddForce(transform.up * BulletSpeed);
-        Destroy(Attack, 2f);
+        Destroy(Attack, 3f);
     }
 }
