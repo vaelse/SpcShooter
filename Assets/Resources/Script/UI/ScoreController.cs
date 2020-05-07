@@ -18,9 +18,9 @@ public class ScoreController : MonoBehaviour
     }
 
     public void IncreaseScore(int points)
-        {
+    {
         currentScore += points;
-        }
+    }
 
 
     public void FixedUpdate()

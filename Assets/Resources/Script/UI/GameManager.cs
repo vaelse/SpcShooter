@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public int killCount = 0;
     public GameObject gameObjectToActive;
-    private int maxKillCount = 10;
+    private readonly int maxKillCount = 9;
 
     public void KillIncrease()
     {
@@ -22,12 +22,12 @@ public class GameManager : MonoBehaviour
     }
     public void Restart()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
         Time.timeScale = 1;
     }
     public void MainMenu()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
         Time.timeScale = 1;
     }
 }

@@ -5,10 +5,10 @@ using UnityEngine;
 public class audiomanager : MonoBehaviour
 {
     public AudioSource audios;
-    public AudioClip exploclip;
+    public AudioClip explosionclip;
 
     public void Explosound()
     {
-        audios.PlayOneShot(exploclip);
+        audios.PlayOneShot(explosionclip);
     }
 }

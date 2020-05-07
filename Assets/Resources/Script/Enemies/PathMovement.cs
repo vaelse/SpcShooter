@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PathMovement : MonoBehaviour
 {
-
-   
     private void Start()
     {                   
         iTween.MoveTo(gameObject, iTween.Hash("path", iTweenPath.GetPath("Path2"), "time", 12, "easytype", iTween.EaseType.linear));
@@ -13,6 +11,5 @@ public class PathMovement : MonoBehaviour
     private void Update()
     {      
         Destroy(gameObject, 5f);
-    }
-    
+    }   
 }

@@ -12,6 +12,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Start()
     {
+     //forced rotate for enemy model to face player
         transform.Rotate(0, 0, 90);
         RandomPoints = Random.Range(0, Points.Length);
         RandomWaitTime = Random.value;
@@ -19,8 +20,9 @@ public class EnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {             
+        
        transform.position = Vector2.MoveTowards(transform.position, Points[RandomPoints].transform.position, movementSpeed * Time.deltaTime);
-
+        //move to a diffrent position after a random time (0s-1s)
         if (Vector2.Distance(transform.position, Points[RandomPoints].transform.position) < 0.1f)
         {
             if(waitTime <= 0)

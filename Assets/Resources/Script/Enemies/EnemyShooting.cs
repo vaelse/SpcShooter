@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyShooting : MonoBehaviour
 {
-    public float RepeatTiming; 
-    public float BulletSpeed;
+    readonly float RepeatTiming = 1; 
+    readonly float BulletSpeed = 4;
     private int ProjectileIndex;
     public GameObject Projectile;
     public Transform[] ProjectileSpawn;
@@ -20,7 +20,9 @@ public class EnemyShooting : MonoBehaviour
         var Attack = GameObject.Instantiate(Projectile) as GameObject;
         Attack.transform.parent = GameObject.Find("Bullets").transform;
         Attack.transform.position = ProjectileSpawn[ProjectileIndex].position;
-        ProjectileIndex++;
+
+        ProjectileIndex++;        
+        //swap the position from where the bullets are instantiated
         if (ProjectileIndex >= ProjectileSpawn.Length)
             ProjectileIndex = 0;
         

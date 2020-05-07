@@ -3538,7 +3538,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2042019529
 Transform:
   m_ObjectHideFlags: 0
@@ -3603,7 +3603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audios: {fileID: 2102988236}
-  exploclip: {fileID: 8300000, guid: 68b1cd0f24df06d4d93e30fb6f956d82, type: 3}
+  explosionclip: {fileID: 8300000, guid: cb5cf0f59610f16478fbde191116e6e3, type: 3}
 --- !u!82 &2102988236
 AudioSource:
   m_ObjectHideFlags: 0

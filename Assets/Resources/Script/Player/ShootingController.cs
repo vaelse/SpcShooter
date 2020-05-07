@@ -40,10 +40,10 @@ public class ShootingController : MonoBehaviour
             BulletColor = BlueBullets;
         }
         else if (Input.GetKey(KeyCode.Space) && Time.time > NextShot)
-            {
+        {
             playerAudioSource.PlayOneShot(shootingSound);
             Shooting(BulletColor);
-            }
+        }
 
         if (ImageComponent.fillAmount == 0 || Input.GetKeyUp(KeyCode.X))
         {
@@ -53,8 +53,7 @@ public class ShootingController : MonoBehaviour
         {
             ImageComponent.fillAmount -= Time.deltaTime * 0.5f;
             ShootingLaser(true);           
-        }
-        
+        }   
     }
 
     public void Shooting(GameObject bullet)
@@ -69,7 +68,6 @@ public class ShootingController : MonoBehaviour
         if (SpawnIndex >= 2)
             SpawnIndex = 0;
         
-
         var BulletRigid = Bullets.GetComponent<Rigidbody2D>();
         BulletRigid.AddForce(-transform.up * BulletSpeed);      
         Destroy(Bullets, 2f);

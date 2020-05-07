@@ -15,13 +15,7 @@ public class EnemiesController : MonoBehaviour
     private void Start()
     {
         killCount = GameObject.Find("GameManager").GetComponent<GameManager>();
-        InvokeRepeating("SpawnKamii", 10f, 15f);
-        InvokeRepeating("SpawnKamii", 10.1f, 15f);
-        InvokeRepeating("SpawnKamii", 10.2f, 15f);
-
-        InvokeRepeating("SpawnKamii2", 20f, 10f);
-        InvokeRepeating("SpawnKamii2", 20.1f, 10f);
-        InvokeRepeating("SpawnKamii2", 20.2f, 10f);
+        InvokeKamiEnemies();
     }
     void Update()
     {    
@@ -30,7 +24,7 @@ public class EnemiesController : MonoBehaviour
             RandomizeEnemies();          
         }      
     }
-  
+ 
     public void SpawnKamii()
     {
         if (killCount.killCount <= maxKillCount)
@@ -50,6 +44,17 @@ public class EnemiesController : MonoBehaviour
         }
     }
    
+    public void InvokeKamiEnemies()
+    {
+        InvokeRepeating("SpawnKamii", 10f, 15f);
+        InvokeRepeating("SpawnKamii", 10.1f, 15f);
+        InvokeRepeating("SpawnKamii", 10.2f, 15f);
+
+        InvokeRepeating("SpawnKamii2", 20f, 10f);
+        InvokeRepeating("SpawnKamii2", 20.1f, 10f);
+        InvokeRepeating("SpawnKamii2", 20.2f, 10f);
+    }
+
     public void RandomizeEnemies()
     {
         if (killCount.killCount <= maxKillCount)
@@ -58,7 +63,6 @@ public class EnemiesController : MonoBehaviour
             if (Time.time > NextSpawn)
             {
                 EnemiesSpawner enemy;
-
                 if (RandomEnemy >= 0.5f)
                 {
                     enemy = EnemiesSpawner.GetNewRed();
@@ -86,6 +90,4 @@ public class EnemiesController : MonoBehaviour
     {   
         enemy.transform.position = SpawnArea.transform.position;
     }
-
-    
 }

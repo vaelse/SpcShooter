@@ -18,6 +18,7 @@ TagManager:
   - BossLazer
   - HealthBox
   - AmmoBox
+  - audioManager
   layers:
   - Default
   - TransparentFX

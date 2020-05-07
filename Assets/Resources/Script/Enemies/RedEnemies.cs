@@ -32,8 +32,6 @@ public class RedEnemies : MonoBehaviour
         redEnemySpawner = GameObject.FindGameObjectWithTag("enemyspawn").GetComponent<EnemiesController>();
        
         audioManager = GameObject.FindGameObjectWithTag("audioManager").GetComponent<audiomanager>();
-
-
     }
 
     private void Update()

@@ -7,7 +7,6 @@ public class SpriteAnimatior : MonoBehaviour
    [SerializeField] private Sprite[] SpriteFrames;
     private int CurrentFrame;
     private float timer;
-    // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
@@ -16,7 +15,6 @@ public class SpriteAnimatior : MonoBehaviour
             timer -= 0.05f;
             CurrentFrame = (CurrentFrame+1)%SpriteFrames.Length;
             gameObject.GetComponent<SpriteRenderer>().sprite = SpriteFrames[CurrentFrame];
-        }
-      
+        }    
     }
 }
